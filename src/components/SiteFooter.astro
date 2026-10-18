@@ -1,0 +1,15 @@
+---
+interface Props{lang:'en'|'fr'}
+const {lang}=Astro.props;
+const isFr=lang==='fr';
+const copy=isFr?['Entreprises, industrie et vision durable.','Le Groupe','Activités','Approche','Carrières','Contact','Douala, Cameroun','Confidentialité']:['Business, industry and the long view.','Our Group','Businesses','Approach','Careers','Contact','Douala, Cameroon','Privacy'];
+const targets=['about/','businesses/','approach/','careers/','contact/'];
+---
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div class="footer-brand"><a href={`/${lang}/`} aria-label="Home"><img src="/assets/img/blue-line-logo.png" width="694" height="359" alt="Blue Line Capital Group" /></a><p>{copy[0]}</p><span>DOUALA · CAMEROON</span></div>
+    <div><div class="footer-kicker">EXPLORE / DÉCOUVRIR</div><div class="footer-links">{targets.map((target,i)=><a href={`/${lang}/${target}`}>{copy[i+1]}</a>)}</div></div>
+    <div><div class="footer-kicker">IN CONVERSATION</div><a class="footer-mail" href="mailto:contact@bluelinecapitale.com">contact@bluelinecapitale.com ↗</a><p>{copy[6]}</p></div>
+  </div>
+  <div class="shell footer-bottom"><span>© <span id="year">{new Date().getFullYear()}</span> Blue Line Capital Group</span><span>Independent perspective · Connected enterprise</span><div><a href={`/${lang}/privacy/`}>{copy[7]}</a> <a href={`/${isFr?'en':'fr'}/`}>{isFr?'EN':'FR'}</a></div></div>
+</footer>

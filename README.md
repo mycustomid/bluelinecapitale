@@ -1,57 +1,34 @@
-# Blue Line Capital Group — Institutional Website Redesign (2026)
+# Blue Line Capital Group — Astro Corporate Website V3
 
-**Delivery format:** complete public-facing static website, not a one-page concept or screenshot. Repository target: `https://github.com/mycustomid/bluelinecapitale`.
+**Astro 5 / Static generation / EN + FR / 9 sector profiles**
 
-**Important:** This is a replacement public website, not the Blue Line internal platform, CMS, dashboard, CRM or login system. Backend products and regulated business services are **not** represented as live features.
+This is the Astro source version of the V2 corporate redesign. Uses **Astro**, not React/Vite or the old dependency-free custom HTML generator. Source pages are `.astro`, all grouped by file-based routes. Shared Astro components provide navigation, footer, metadata, language switching and schema markup.
 
-## Design
+## Installation
 
-- Corporate editorial art direction: deep petrol navy (`#0b2030`), warm ivory (`#f4f1e9`) and muted brushed gold (`#c6a16d`).
-- Brand logo from the provided repository, no fabricated logo.
-- Distinct page headings, substantive per-sector copy, natural photography references and owned local editorial imagery.
-- Nine sector **areas** (not nine independently verified legal entities).
-- Zero runtime dependencies; hand-authored CSS and lightweight vanilla JavaScript.
-- 2 complete languages: English and French, each with real, crawlable URLs.
-- Contact form honestly opens the user's email client; without an API or email service this does **not** claim a server submission.
+```bash
+npm install
+npm run check:structure
+npm run dev
+npm run build
+npm run preview
+```
+
+Node.js >=20.3.0. `npm run build` emits `dist/`. For deployment to Vercel or Netlify use the included configuration files. npm packages and `node_modules` are intentionally not in this ZIP. The npm registry could not be reached from the build sandbox, so Astro build **must** be run in a network-enabled environment before deploying.
 
 ## Pages
 
-| Route family | Description |
-|---|---|
-| `/` and `/en/` | English homepage |
-| `/fr/` | French homepage |
-| `/en/about/`, `/fr/about/` | Group overview and principles |
-| `/en/businesses/`, `/fr/businesses/` | Sector directory with working filters |
-| `/en/businesses/{slug}/`, `/fr/businesses/{slug}/` | 9 individual business and function profiles, each with capabilities, approach and FAQ |
-| `/en/approach/`, `/fr/approach/` | Editorial business philosophy |
-| `/en/careers/`, `/fr/careers/` | People/career introductions (no invented vacancies) |
-| `/en/contact/`, `/fr/contact/` | Contact and mailto-based form with validation |
-| `/en/privacy/`, `/fr/privacy/` | Technical privacy disclosure pending legal approval |
-| `/companies/{legacy-slug}/` and `/platform/ai_copilot/` | Legacy route redirects |
+- `/` redirect to `/en/`
+- `/en/`, `/fr/`: editorial home
+- About, Businesses, Approach, Careers, Contact, Privacy in both languages
+- 9 dedicated sector pages per language
+- Legacy `/companies/` and `/platform/ai_copilot/` redirects
+- 404 page
 
-The archive contains 43 HTML files (including bilingual pages, legacy redirects and 404), CSS, JS, local images, SEO sitemap and editorial documentation. 
+## Assets
 
-## Installation & build
+The ZIP contains local WebP photos and illustrated concepts in `public/assets/img`, the original repo logo, CSS, JS and Open Graph image. Remote Unsplash URLs were replaced with editorial local fallbacks in this edition. All art must be considered editorial stock/concept, never evidence of group properties or employees. Full sourcing and verification checklist under `docs/`.
 
-Node.js 18 or later is enough. No `npm install` needed.
+## Caution
 
-```bash
-npm run dev       # http://127.0.0.1:5173/
-npm run test      # static internal-link, image and page checks
-npm run build     # exports deployable dist/
-npm run preview   # serves built dist/
-```
-
-Deploy `dist/` to static hosting. `vercel.json` and `netlify.toml` are provided. Make sure GitHub repository files are **replaced**, not added on top of conflicting old `src/`, `package-lock.json`, and Vite settings (see `docs/DEPLOY.md`).
-
-## Quality boundaries
-
-- **Static QA:** internal paths, image `alt`, all required routes, build commands checked.
-- **Browser QA:** NOT completed in this environment, because browser navigation was blocked by the administrator. Perform visual regression checks on Chrome/Safari/Firefox and across 320/390/768/1024/1440px before publishing.
-- **Live performance:** Lighthouse and field Core Web Vitals NOT measured or guaranteed.
-- **Photography:** selected Unsplash links load in online browsers; custom locally bundled visual illustrations serve as fallbacks. Other office/technology photography is bundled locally. Primary external stock photographs are *not* all bundled. This is documented, not disguised.
-- **Legal / contact / regulatory facts:** need client approval (see `docs/CONTENT_VERIFICATION.md`).
-
-## Prior version and why this replacement differs
-
-The earlier 34 KB draft depended almost entirely on remote photographs, carried minimal sector pages and was not build-verified. This edition includes real directory routes, longer sector content, local visual assets, source checks and a dependency-free build path. It is not described as a verified production release until visual QA and client factual approval are complete.
+Not a back-office/CRM/AI product. Contact form opens default mail app, without backend. Legal/regulated service claims and official contact details require client approval. **Astro build + browser visual QA not executed here** owing to npm/network constraints.
