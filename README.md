@@ -1,47 +1,57 @@
-# Blue Line Capital Group (`bluelinecapitale`)
+# Blue Line Capital Group — Institutional Website Redesign (2026)
 
-> **Capital, Construction, Industry & Enterprise Across Cameroon & CEMAC**  
-> Official Domain: [https://bluelinecapitale.com](https://bluelinecapitale.com)  
-> Repository: [mycustomid/bluelinecapitale](https://github.com/mycustomid/bluelinecapitale)
+**Delivery format:** complete public-facing static website, not a one-page concept or screenshot. Repository target: `https://github.com/mycustomid/bluelinecapitale`.
 
----
+**Important:** This is a replacement public website, not the Blue Line internal platform, CMS, dashboard, CRM or login system. Backend products and regulated business services are **not** represented as live features.
 
-## 🏛️ About the Group
+## Design
 
-**Blue Line Capital Group** is a diversified corporate holding group headquartered in Douala, Cameroon. The group operates across 9 commercial business lines and 7 legal entities, deploying capital, industrial production, and technology-driven operations across Central Africa and international corridors (Cameroon, UAE, France, United States).
+- Corporate editorial art direction: deep petrol navy (`#0b2030`), warm ivory (`#f4f1e9`) and muted brushed gold (`#c6a16d`).
+- Brand logo from the provided repository, no fabricated logo.
+- Distinct page headings, substantive per-sector copy, natural photography references and owned local editorial imagery.
+- Nine sector **areas** (not nine independently verified legal entities).
+- Zero runtime dependencies; hand-authored CSS and lightweight vanilla JavaScript.
+- 2 complete languages: English and French, each with real, crawlable URLs.
+- Contact form honestly opens the user's email client; without an API or email service this does **not** claim a server submission.
 
-### Core Divisions & Business Lines
-1. **Blue Line Capital Group** — Strategic holding company, capital allocation, shared governance.
-2. **Blue Line Exchange (BLEX)** — Bureau de change & currency treasury operations (XAF, USD, EUR, AED).
-3. **Blue Line Property Management** — Residential & commercial assets, leasing & facility maintenance.
-4. **Blue Line Construction** — Infrastructure development, EPC project delivery & site controls.
-5. **Blue Line Sugar Manufacturing** — Industrial manufacturing, production planning & supply chain.
-6. **Blue Line Importation, Assembly & Trade** — Port customs clearance, CKD/SKD assembly & CEMAC regional distribution.
-7. **Group Finance & Accounting** — Multi-entity fiscal compliance (OHADA / SYSCOHADA standards).
-8. **HR & Payroll** — Workforce management, talent development & CNPS compliance.
-9. **Enterprise Technology & AI Copilot** — Enterprise ERP, executive dashboards & decision support.
+## Pages
 
----
+| Route family | Description |
+|---|---|
+| `/` and `/en/` | English homepage |
+| `/fr/` | French homepage |
+| `/en/about/`, `/fr/about/` | Group overview and principles |
+| `/en/businesses/`, `/fr/businesses/` | Sector directory with working filters |
+| `/en/businesses/{slug}/`, `/fr/businesses/{slug}/` | 9 individual business and function profiles, each with capabilities, approach and FAQ |
+| `/en/approach/`, `/fr/approach/` | Editorial business philosophy |
+| `/en/careers/`, `/fr/careers/` | People/career introductions (no invented vacancies) |
+| `/en/contact/`, `/fr/contact/` | Contact and mailto-based form with validation |
+| `/en/privacy/`, `/fr/privacy/` | Technical privacy disclosure pending legal approval |
+| `/companies/{legacy-slug}/` and `/platform/ai_copilot/` | Legacy route redirects |
 
-## 🚀 Development & Patching
+The archive contains 43 HTML files (including bilingual pages, legacy redirects and 404), CSS, JS, local images, SEO sitemap and editorial documentation. 
 
-This repository serves as the baseline for the Blue Line Capital Group portal. When ChatGPT or external AI generators produce code patches or design enhancements, they can be extracted directly into the project root.
+## Installation & build
+
+Node.js 18 or later is enough. No `npm install` needed.
 
 ```bash
-# Install dependencies
-npm install
-
-# Run local development server
-npm run dev
-
-# Production build
-npm run build
+npm run dev       # http://127.0.0.1:5173/
+npm run test      # static internal-link, image and page checks
+npm run build     # exports deployable dist/
+npm run preview   # serves built dist/
 ```
 
----
+Deploy `dist/` to static hosting. `vercel.json` and `netlify.toml` are provided. Make sure GitHub repository files are **replaced**, not added on top of conflicting old `src/`, `package-lock.json`, and Vite settings (see `docs/DEPLOY.md`).
 
-## 🔒 Compliance & Regulatory Alignments
-- **OHADA**: Uniform Acts on General Commercial Law and Corporate Governance.
-- **SYSCOHADA**: Revised Accounting Standards for CEMAC Enterprises.
-- **BEAC / COBAC**: Currency regulations and foreign exchange visibility.
-- **CNPS**: Social Security & statutory worker welfare.
+## Quality boundaries
+
+- **Static QA:** internal paths, image `alt`, all required routes, build commands checked.
+- **Browser QA:** NOT completed in this environment, because browser navigation was blocked by the administrator. Perform visual regression checks on Chrome/Safari/Firefox and across 320/390/768/1024/1440px before publishing.
+- **Live performance:** Lighthouse and field Core Web Vitals NOT measured or guaranteed.
+- **Photography:** selected Unsplash links load in online browsers; custom locally bundled visual illustrations serve as fallbacks. Other office/technology photography is bundled locally. Primary external stock photographs are *not* all bundled. This is documented, not disguised.
+- **Legal / contact / regulatory facts:** need client approval (see `docs/CONTENT_VERIFICATION.md`).
+
+## Prior version and why this replacement differs
+
+The earlier 34 KB draft depended almost entirely on remote photographs, carried minimal sector pages and was not build-verified. This edition includes real directory routes, longer sector content, local visual assets, source checks and a dependency-free build path. It is not described as a verified production release until visual QA and client factual approval are complete.
