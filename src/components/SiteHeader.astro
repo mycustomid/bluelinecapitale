@@ -8,6 +8,7 @@ const targets=['','about/','businesses/','approach/','careers/','contact/'];
 const links=targets.map((target,i)=>({text:names[i],href:`/${lang}/${target}`,active:currentPath===`/${lang}/${target}` || (target==='businesses/' && currentPath.startsWith(`/${lang}/businesses/`))}));
 const switchTitle=lang==='en'?'Passer en français':'Switch to English';
 const cta=lang==='fr'?'Contacter le Groupe':'Contact the Group';
+const erpCta=lang==='fr'?'Portail ERP (9 Produits)':'9-Product ERP OS';
 ---
 <a class="skip" href="#main">{lang==='en'?'Skip to content':'Aller au contenu'}</a>
 <header class="site-header">
@@ -18,12 +19,14 @@ const cta=lang==='fr'?'Contacter le Groupe':'Contact the Group';
     </nav>
     <div class="header-right">
       <a class="lang-switch" href={alternate} title={switchTitle} aria-label={switchTitle}>{toOther.toUpperCase()} <span aria-hidden="true">↗</span></a>
+      <a href="/erp/?gate=1" class="nav-cta" style="background:var(--gold);color:var(--ink);border-color:var(--gold);font-weight:700">{erpCta}<span aria-hidden="true">↗</span></a>
       <a href={`/${lang}/contact/`} class="nav-cta">{cta}<span aria-hidden="true">↗</span></a>
       <button class="menu-toggle" aria-label={lang==='en'?'Open menu':'Ouvrir le menu'} aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
     </div>
   </div>
   <nav id="mobile-menu" class="mobile-nav" aria-label={lang==='fr'?'Navigation mobile':'Mobile navigation'} inert>
     {links.map(link=><a href={link.href} class:list={['nav-link',{current:link.active}]} aria-current={link.active?'page':undefined}>{link.text}</a>)}
+    <a class="mobile-contact" href="/erp/?gate=1">{erpCta} →</a>
     <a class="mobile-contact" href={`/${lang}/contact/`}>{cta} →</a>
   </nav>
 </header>
