@@ -42,7 +42,7 @@ body{background:var(--ux-canvas);color:var(--ux-ink);font-size:13px}
 .login-container{width:min(1500px,100%)}.login-top{margin-bottom:23px;padding-bottom:22px}
 .login-brand h1{font-size:clamp(21px,2.5vw,34px);font-weight:400;letter-spacing:-.04em}
 .login-brand p{font-size:12px;max-width:650px;line-height:1.65}
-.portal-lede{background-color:#173b47!important;background-image:linear-gradient(90deg,#092633f4 15%,#183e4de0 64%,#173e4599),url('/erp/editorial/blue-line-capital-group.svg')!important;background-position:center!important;background-size:cover!important}
+.portal-lede{background-color:#173b47!important;background-image:linear-gradient(90deg,#092633f4 15%,#183e4de0 64%,#173e4599),url('/editorial/blue-line-capital-group.svg')!important;background-position:center!important;background-size:cover!important}
 .portal-lede h2{font-size:clamp(29px,4vw,61px);letter-spacing:-.045em}
 .portal-lede p{font-size:13px;line-height:1.8}
 .products-9-grid{gap:12px}.product-9-card{border-radius:8px;min-height:128px;padding:19px 19px 20px;background:#102e3c;border:1px solid #ffffff26}
@@ -78,12 +78,27 @@ html[data-erp-product=digital]{--ux-accent:#78bdd4}
 @media(max-width:790px){.topbar{padding:9px 13px;min-height:65px}.topbar-actions{margin-left:auto}.app-content{width:100%}.flowchart-bar{padding:10px 13px}.main-content{padding:22px 15px}.top-demo{display:none}.sidebar{width:min(290px,86vw)}.rc-help-panel{top:70px}.portal-lede{padding:24px 19px}.products-9-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-9-card{min-height:150px}.terminal-card{min-height:0}}
 @media(max-width:560px){.products-9-grid{grid-template-columns:1fr}.product-9-card{min-height:125px}.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stat-card{min-height:125px}.flow-steps-grid{grid-template-columns:1fr}.topbar-actions{gap:6px}.role-label select{max-width:112px}.rc-help-toggle{width:35px;height:35px}.heading-actions .btn{white-space:normal;text-align:center}.portal-lede h2{font-size:36px}.page-heading h1{font-size:29px}.table-wrap{max-width:calc(100vw - 30px)}.data-table td{min-width:96px}.app-footer{font-size:10px;line-height:1.55}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
-.product-9-card[data-product="holding"]:before{background-image:url("/erp/editorial/blue-line-capital-group.svg")}
-.product-9-card[data-product="blex"]:before{background-image:url("/erp/editorial/blue-line-exchange.svg")}
-.product-9-card[data-product="property"]:before{background-image:url("/erp/editorial/blue-line-property-management.svg")}
-.product-9-card[data-product="construction"]:before{background-image:url("/erp/editorial/blue-line-construction.svg")}
-.product-9-card[data-product="sugar"]:before{background-image:url("/erp/editorial/blue-line-sugar-manufacturing.svg")}
-.product-9-card[data-product="trade"]:before{background-image:url("/erp/editorial/blue-line-import-assembly-trade.svg")}
-.product-9-card[data-product="finance"]:before{background-image:url("/erp/editorial/group-finance-accounting.svg")}
-.product-9-card[data-product="hr"]:before{background-image:url("/erp/editorial/hr-payroll.svg")}
-.product-9-card[data-product="digital"]:before{background-image:url("/erp/editorial/digital-transformation-ai.svg")}
+.product-9-card[data-product="holding"]:before{background-image:url("/editorial/blue-line-capital-group.svg")}
+.product-9-card[data-product="blex"]:before{background-image:url("/editorial/blue-line-exchange.svg")}
+.product-9-card[data-product="property"]:before{background-image:url("/editorial/blue-line-property-management.svg")}
+.product-9-card[data-product="construction"]:before{background-image:url("/editorial/blue-line-construction.svg")}
+.product-9-card[data-product="sugar"]:before{background-image:url("/editorial/blue-line-sugar-manufacturing.svg")}
+.product-9-card[data-product="trade"]:before{background-image:url("/editorial/blue-line-import-assembly-trade.svg")}
+.product-9-card[data-product="finance"]:before{background-image:url("/editorial/group-finance-accounting.svg")}
+.product-9-card[data-product="hr"]:before{background-image:url("/editorial/hr-payroll.svg")}
+.product-9-card[data-product="digital"]:before{background-image:url("/editorial/digital-transformation-ai.svg")}
+
+/* AESTHETIC REFINEMENT: Anti-Wrap & Geometric Stability for Cybernetic Eye 2.0 */
+.stat-value, .stat-value.mono, .mono, .data-table td.mono, .data-table strong.mono { white-space: nowrap !important; }
+.flow-pill-title { white-space: nowrap !important; }
+.flow-track { display: flex; align-items: center; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 2px; }
+.flow-pill { flex: 0 0 auto; white-space: nowrap; }
+.data-table td { vertical-align: middle; }
+.data-table td .soft { display: inline-block; min-width: 120px; white-space: normal; }
+.data-table .pill { white-space: nowrap !important; display: inline-block; }
+.data-table .btn { white-space: nowrap !important; }
+.stat-footer { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 560px) {
+  .stats-grid { grid-template-columns: 1fr !important; }
+  .stat-card { min-height: auto; }
+}
