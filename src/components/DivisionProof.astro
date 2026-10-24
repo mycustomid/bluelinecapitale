@@ -1,0 +1,217 @@
+---
+const SECTORS = [
+  {
+    "slug": "blue-line-capital-group",
+    "code": "01",
+    "tag": "GROUP / GOVERNANCE",
+    "enTitle": "Group strategy",
+    "frTitle": "Gouvernance du Groupe",
+    "enSub": "Portfolio governance",
+    "frSub": "Gouvernance du portefeuille",
+    "enSteps": [
+      "Reporting from subsidiaries",
+      "Capital allocation review",
+      "Compliance and risk review",
+      "Board-level decision"
+    ],
+    "frSteps": [
+      "Remontée des filiales",
+      "Revue des allocations",
+      "Contrôle et conformité",
+      "Décision de direction"
+    ],
+    "accent": "#a9c6ce"
+  },
+  {
+    "slug": "blue-line-exchange",
+    "code": "02",
+    "tag": "FOREIGN EXCHANGE",
+    "enTitle": "Exchange desk",
+    "frTitle": "Bureau de change",
+    "enSub": "Treasury operations",
+    "frSub": "Trésorerie et change",
+    "enSteps": [
+      "Customer request",
+      "KYC review",
+      "Rate and settlement",
+      "Daily reconciliation"
+    ],
+    "frSteps": [
+      "Demande du client",
+      "Contrôle KYC",
+      "Cours et règlement",
+      "Rapprochement quotidien"
+    ],
+    "accent": "#d4c5a5"
+  },
+  {
+    "slug": "blue-line-property-management",
+    "code": "03",
+    "tag": "HOSPITALITY / ASSETS",
+    "enTitle": "Property operations",
+    "frTitle": "Exploitation immobilière",
+    "enSub": "Hospitality & property",
+    "frSub": "Hôtellerie et immobilier",
+    "enSteps": [
+      "Reservation & arrival",
+      "Room preparation",
+      "Guest folio",
+      "Performance review"
+    ],
+    "frSteps": [
+      "Réservation et arrivée",
+      "Préparation chambre",
+      "Folio et paiement",
+      "Revue de performance"
+    ],
+    "accent": "#8fb6b1"
+  },
+  {
+    "slug": "blue-line-construction",
+    "code": "04",
+    "tag": "BUILT ENVIRONMENT",
+    "enTitle": "Construction",
+    "frTitle": "Construction",
+    "enSub": "Infrastructure delivery",
+    "frSub": "Réalisation des projets",
+    "enSteps": [
+      "Scope and procurement",
+      "Site mobilization",
+      "Progress & HSE controls",
+      "Inspection and handover"
+    ],
+    "frSteps": [
+      "Cadrage et achats",
+      "Mobilisation chantier",
+      "Suivi et sécurité",
+      "Contrôle et réception"
+    ],
+    "accent": "#c5b19a"
+  },
+  {
+    "slug": "blue-line-sugar-manufacturing",
+    "code": "05",
+    "tag": "PROCESS / PRODUCTION",
+    "enTitle": "Sugar manufacturing",
+    "frTitle": "Production sucrière",
+    "enSub": "Industrial systems",
+    "frSub": "Systèmes industriels",
+    "enSteps": [
+      "Materials intake",
+      "Production order",
+      "Quality review",
+      "Batch release"
+    ],
+    "frSteps": [
+      "Réception matières",
+      "Ordre de fabrication",
+      "Contrôle qualité",
+      "Libération du lot"
+    ],
+    "accent": "#c7b88d"
+  },
+  {
+    "slug": "blue-line-import-assembly-trade",
+    "code": "06",
+    "tag": "TRADE / LOGISTICS",
+    "enTitle": "Trade & assembly",
+    "frTitle": "Commerce et assemblage",
+    "enSub": "Supply chain",
+    "frSub": "Chaîne logistique",
+    "enSteps": [
+      "Order & documentation",
+      "Port and customs",
+      "Assembly and quality",
+      "Dispatch"
+    ],
+    "frSteps": [
+      "Commande et documents",
+      "Port et douane",
+      "Assemblage et qualité",
+      "Expédition"
+    ],
+    "accent": "#a4b4bb"
+  },
+  {
+    "slug": "group-finance-accounting",
+    "code": "07",
+    "tag": "FINANCE / CONTROL",
+    "enTitle": "Group finance",
+    "frTitle": "Finance du Groupe",
+    "enSub": "Financial oversight",
+    "frSub": "Pilotage financier",
+    "enSteps": [
+      "Document intake",
+      "Ledger posting",
+      "Tax and control review",
+      "Reporting approval"
+    ],
+    "frSteps": [
+      "Réception des pièces",
+      "Saisie comptable",
+      "Revue fiscale",
+      "Validation reporting"
+    ],
+    "accent": "#adb3d1"
+  },
+  {
+    "slug": "hr-payroll",
+    "code": "08",
+    "tag": "PEOPLE / ORGANISATION",
+    "enTitle": "People operations",
+    "frTitle": "Ressources humaines",
+    "enSub": "Workforce management",
+    "frSub": "Gestion des équipes",
+    "enSteps": [
+      "Attendance & requests",
+      "Manager validation",
+      "Payroll preparation",
+      "HR sign-off"
+    ],
+    "frSteps": [
+      "Pointages et demandes",
+      "Validation managers",
+      "Préparation paie",
+      "Validation RH"
+    ],
+    "accent": "#b7adba"
+  },
+  {
+    "slug": "digital-transformation-ai",
+    "code": "09",
+    "tag": "DIGITAL / SYSTEMS",
+    "enTitle": "Digital systems",
+    "frTitle": "Systèmes numériques",
+    "enSub": "Process orchestration",
+    "frSub": "Orchestration des processus",
+    "enSteps": [
+      "Service request",
+      "Integration pipeline",
+      "Security review",
+      "Release and monitoring"
+    ],
+    "frSteps": [
+      "Demande métier",
+      "Intégration systèmes",
+      "Contrôle sécurité",
+      "Déploiement et suivi"
+    ],
+    "accent": "#8cb7c2"
+  }
+];
+interface Props { lang:'en'|'fr'; slug:string; }
+const {lang,slug}=Astro.props;
+const data = SECTORS.find((s)=>s.slug===slug);
+const isFr=lang==='fr';
+const title=isFr?'Un modèle opérationnel clair.':'An operating model with clarity.';
+const intro=isFr?'Une lecture du parcours métier proposée pour cadrer le produit numérique. Cette représentation ne constitue ni une certification de conformité ni une référence de réalisation achevée.':'A proposed operational journey to align the digital product with its business domain. This diagram is not a compliance certification or a claim of completed delivery.';
+const actions=isFr?['Découvrir les systèmes','Discuter du projet']:['Explore the systems','Discuss a project'];
+const links=[`/${lang}/businesses/`,`/${lang}/contact/`];
+---
+{data && <section class="division-proof section" aria-label={isFr?'Modèle opérationnel':'Operating model'}>
+<div class="shell division-proof-inner">
+<div class="division-proof-intro"><div><span class="proof-code">{data.code} / 09 — {data.tag}</span><h2>{title}</h2></div><div><p>{intro}</p><div class="proof-actions"><a href={links[0]}>{actions[0]} <span aria-hidden="true">↗</span></a><a href={links[1]}>{actions[1]} <span aria-hidden="true">↗</span></a></div></div></div>
+<div class="proof-workflow" role="list">{(isFr?data.frSteps:data.enSteps).map((step,index)=><article class="proof-step" role="listitem"><span class="proof-number">0{index+1}</span><h3>{step}</h3><span class="proof-progress" aria-hidden="true"></span></article>)}</div>
+<div class="proof-note"><span class="proof-pulse" aria-hidden="true"></span><span>{isFr?'Cadre de conception · validation métier nécessaire avant la mise en production':'Design framework · business validation required before production'}</span><span class="proof-end">BLUE LINE / ENTERPRISE</span></div>
+</div>
+</section>}

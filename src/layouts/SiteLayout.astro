@@ -1,10 +1,14 @@
 ---
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import DivisionProof from '../components/DivisionProof.astro';
+import EditorialJourney from '../components/EditorialJourney.astro';
 interface Props { title:string; description:string; lang:'en'|'fr'; }
 const {title,description,lang}=Astro.props;
 const currentPath=Astro.url.pathname.endsWith('/')?Astro.url.pathname:Astro.url.pathname+'/';
 const otherLang=lang==='en'?'fr':'en';
+const sectorSlug = /^\/(?:en|fr)\/businesses\/([^/]+)\/$/.exec(currentPath)?.[1] ?? null;
+const interiorPage = /^\/(?:en|fr)\/(about|approach|careers|contact|businesses)\/$/.exec(currentPath)?.[1] ?? null;
 const otherPath=currentPath.replace(/^\/(en|fr)(?=\/)/,`/${otherLang}`);
 const base='https://bluelinecapitale.com';
 const canonical=new URL(currentPath,base).toString();
@@ -18,6 +22,7 @@ const schema={"@context":"https://schema.org","@type":"Organization",name:'Blue 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#0b2030" />
+  <meta name="color-scheme" content="light" />
   <meta name="description" content={description} />
   <title>{title}</title>
   <link rel="canonical" href={canonical}/>
@@ -33,11 +38,13 @@ const schema={"@context":"https://schema.org","@type":"Organization",name:'Blue 
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
   <link rel="preload" href="/assets/styles.css" as="style"/>
   <link rel="stylesheet" href="/assets/styles.css"/>
+  <link rel="stylesheet" href="/assets/enterprise-refinement.css"/>
   <script type="application/ld+json" set:html={JSON.stringify(schema)}/>
 </head>
-<body>
+<body data-sector={sectorSlug ?? undefined}>
   <SiteHeader lang={lang} currentPath={currentPath}/>
-  <main id="main"><slot/></main>
+  <main id="main"><slot/>{sectorSlug && <DivisionProof lang={lang} slug={sectorSlug}/>}
+    {interiorPage && <EditorialJourney lang={lang} page={interiorPage}/>}</main>
   <SiteFooter lang={lang}/>
   <script is:inline defer src="/assets/site.js"></script>
 </body>

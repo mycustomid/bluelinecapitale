@@ -1,0 +1,33 @@
+---
+interface Props{lang:'en'|'fr';page:string;}
+const {lang,page}=Astro.props;
+const isFr=lang==='fr';
+const content={
+ about:{
+  en:{eyebrow:'GROUP / OPERATING PRINCIPLES',title:'One standard of accountability across different disciplines.',lead:'A diversified group needs more than a portfolio diagram. Shared governance, responsible reporting and clear operating ownership help every business retain its identity without working in isolation.',items:[['01','Distinct business mandates','Each division should have a defined mandate, team ownership and operating boundaries.'],['02','Clear reporting interfaces','Comparable reporting helps leadership coordinate resources without hiding differences between industries.'],['03','Evidence before claims','Projects, financial results and certifications should be published only when verified.']]},
+  fr:{eyebrow:'GROUPE / PRINCIPES OPÉRATIONNELS',title:'Une même exigence de responsabilité entre métiers.',lead:'Un Groupe diversifié a besoin de plus qu’un organigramme. La gouvernance, la remontée d’information et la définition des responsabilités permettent de coordonner les activités sans gommer leurs spécificités.',items:[['01','Périmètres métiers définis','Chaque activité doit conserver une mission, des équipes et une responsabilité opérationnelle claires.'],['02','Reporting lisible','Un langage commun permet de piloter sans réduire les différences entre secteurs.'],['03','Des preuves avant les promesses','Les réalisations, chiffres et certifications ne doivent être publiés qu’après vérification.']]}
+ },
+ approach:{
+  en:{eyebrow:'APPROACH / DELIVERY',title:'From business understanding to measurable execution.',lead:'Responsible enterprise design begins with operational context: requirements, accountability, checkpoints and traceable decisions.',items:[['01','Understand the business','Map actual operating practices and user needs before choosing technology.'],['02','Design the handoffs','Define what each role receives, verifies, and passes to the next.'],['03','Review the evidence','Assess progress against agreed outcomes rather than decorative dashboard metrics.']]},
+  fr:{eyebrow:'APPROCHE / MISE EN ŒUVRE',title:'Comprendre les métiers, puis structurer l’exécution.',lead:'La conception d’un système d’entreprise commence par le contexte métier : exigences, responsabilités, points de contrôle et décisions traçables.',items:[['01','Comprendre le métier','Observer les pratiques réelles avant de choisir les outils numériques.'],['02','Définir les relais','Préciser ce que chaque poste reçoit, valide et transmet.'],['03','Vérifier les résultats','Évaluer les avancées à partir de preuves plutôt que d’indicateurs décoratifs.']]}
+ },
+ careers:{
+  en:{eyebrow:'CAREERS / PEOPLE',title:'Good work begins with clear expectations.',lead:'For professional enquiries and future opportunities, introduce your skills, disciplines and preferred area of contribution. This page does not imply that a vacancy is currently open.',items:[['01','Sector experience','Explain your industry knowledge and relevant project experience.'],['02','Operating skills','Show how you solve practical problems and collaborate across teams.'],['03','Professional enquiry','Use the contact page to request information on opportunities and processes.']]},
+  fr:{eyebrow:'CARRIÈRES / TALENTS',title:'Les bons projets exigent des attentes claires.',lead:'Pour les prises de contact professionnelles et de futures possibilités, présentez vos compétences et domaines de contribution. Cette page ne constitue pas une annonce de recrutement.',items:[['01','Expérience sectorielle','Présenter votre connaissance du métier et des projets pertinents.'],['02','Compétences opérationnelles','Expliquer votre manière de résoudre les problèmes concrets et de collaborer.'],['03','Prise de contact','Utiliser la page Contact pour demander des informations sur les opportunités.']]}
+ },
+ contact:{
+  en:{eyebrow:'CONTACT / NEXT STEPS',title:'Make the first exchange useful.',lead:'A concise introduction helps direct your enquiry. This website opens your email application; it does not submit the form to a server.',items:[['01','Introduce the organisation','State your organisation, location and contact point.'],['02','Describe the purpose','Specify whether the request concerns a partnership, supplier discussion or systems review.'],['03','Agree on next steps','Share your objectives and preferred follow-up channel.']]},
+  fr:{eyebrow:'CONTACT / PROCHAINES ÉTAPES',title:'Un premier échange utile et précis.',lead:'Une présentation concise facilite l’orientation de votre demande. Le formulaire ouvre votre messagerie ; il n’envoie aucune donnée à un serveur.',items:[['01','Présenter votre organisation','Indiquer le nom, le pays et l’interlocuteur.'],['02','Préciser la demande','Définir s’il s’agit d’un partenariat, fournisseur ou audit de système.'],['03','Convenir de la suite','Transmettre l’objectif et le canal de réponse souhaité.']]}
+ },
+ businesses:{
+  en:{eyebrow:'PORTFOLIO / CLARITY',title:'Nine disciplines, considered individually.',lead:'Explore each operating area for a domain-specific overview and proposed workflow. Product descriptions are conceptual until confirmed by business stakeholders.',items:[['01','Discover','Understand the scope of each operating area.'],['02','Compare','Explore the dependencies between people, process and information.'],['03','Discuss','Contact the team for verified project information or implementation details.']]},
+  fr:{eyebrow:'PORTEFEUILLE / CLARTÉ',title:'Neuf domaines, chacun avec sa logique.',lead:'Chaque domaine présente son périmètre et un parcours métier proposé. Les descriptions des produits restent conceptuelles jusqu’à validation par les responsables métiers.',items:[['01','Découvrir','Comprendre le périmètre de chaque activité.'],['02','Comparer','Examiner les liens entre équipes, processus et informations.'],['03','Échanger','Demander des références vérifiées ou des détails d’implémentation.']]}
+ }
+};
+const data=content[page]?.[lang];
+---
+{data && <section class="editorial-journey section" aria-label={data.eyebrow}>
+ <div class="shell"><div class="editorial-journey-head"><div><span class="proof-code">{data.eyebrow}</span><h2>{data.title}</h2></div><p>{data.lead}</p></div>
+ <div class="editorial-journey-grid">{data.items.map(item=><article><span>{item[0]}</span><h3>{item[1]}</h3><p>{item[2]}</p></article>)}</div>
+ </div>
+</section>}
